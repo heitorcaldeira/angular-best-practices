@@ -1,6 +1,6 @@
 # Removendo inscrições
 
-Alguns método para se desinscrever de uma stream de dados:
+Alguns métodos para se desinscrever de uma stream de dados:
 
 ```
 subscription: Subscription;
