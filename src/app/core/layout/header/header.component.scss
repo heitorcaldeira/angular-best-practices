@@ -1,0 +1,35 @@
+@import "../../../../assets/scss/imports/variables";
+@import "../../../../assets/scss/imports/mixins";
+
+.header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__menus {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    display: none;
+
+    @include breakpoint($breakpoint-md) {
+      display: flex;
+    }
+
+    li {
+      margin: 0 1rem;
+      padding: 0 1rem .4rem 1rem;
+      cursor: pointer;
+      border-bottom: .2rem solid $primary;
+    }
+  }
+
+  &__mobile {
+    display: block;
+
+    @include breakpoint($breakpoint-md) {
+      display: none;
+    }
+  }
+}

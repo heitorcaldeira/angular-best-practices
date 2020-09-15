@@ -1,0 +1,20 @@
+@import "../../../assets/scss/imports/variables";
+@import "../../../assets/scss/imports/mixins";
+
+.home {
+  background: url('../../../assets/images/lab_art_bg.png') $secondary center;
+  height: 100vh;
+  flex: 1;
+  flex-direction: column;
+  background-size: cover;
+  display: flex;
+  font-size: 10rem;
+  font-style: italic;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    background: $white;
+    padding: 2rem 3rem;
+  }
+}

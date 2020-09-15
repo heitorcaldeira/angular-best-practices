@@ -1,22 +1,40 @@
-# Melhores práticas em Angular
+# Estrutura de pastas
 
-`npm install` após clonar o repositório.
-
-`ng serve` para rodar um servidor de desenvolvimento.
-
-### Branches:
-`folder-structure` - Uma sugestão para a estrutura de pastas
-
-`track-by` - Melhorando a performance do *ngFor
-
-`custom-pipes` - Nunca mais chame funções dentro do seu arquivo de template
-
-`observables` - Dicas para tratar uma stream de dados  // merge-operators
-
-`cleanup-subscriptions` - Evitando memory leaks
-
-`lazy-loading-modules` - Carregando módulos sob demanda
-
-`lazy-loading-components` - Carregando componentes sob demanda \[Angular9+\]
-
-`lifecycle` - Entendendo o ciclo de vida de um componente
+    |-- app
+        |-- modules
+            |-- home
+                |-- [+] components
+                |-- [+] pages
+                |-- [+] services
+                |-- [+] models
+                |-- [+] store
+                    |-- [+] actions
+                    |-- [+] reducers
+                    |-- [+] effects
+                |-- home-routing.module.ts
+                |-- home.module.ts
+        |-- core
+            |-- [+] auth
+            |-- [+] layout
+                |-- [+] header
+                |-- [+] footer
+            |-- [+] guards
+            |-- [+] interceptors
+            |-- [+] services
+        |-- shared
+            |-- [+] components
+                |-- [+] custom-button
+                    |-- custom-button.module.ts
+            |-- [+] directives
+            |-- [+] pipes
+            |-- [+] models
+        |-- [+] configs
+    |-- assets
+         |-- scss
+              |-- [+] imports
+                  |-- _variables.scss
+                  |-- _mixins.scss
+              |-- styles.scss
+              
+Referência: 
+[How to define a highly scalable folder structure for your Angular project](https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7)

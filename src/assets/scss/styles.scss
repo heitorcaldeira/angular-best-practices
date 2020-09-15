@@ -1,0 +1,37 @@
+@import "../../assets/scss/imports/variables";
+@import "../../assets/scss/imports/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+
+  @include breakpoint($breakpoint-sm) {
+    max-width: 540px;
+  }
+
+  @include breakpoint($breakpoint-md) {
+    max-width: 720px;
+  }
+
+  @include breakpoint($breakpoint-lg) {
+    max-width: 1140px;
+  }
+}
