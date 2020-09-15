@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {BehaviorSubject, of, Subscription} from 'rxjs';
 import {debounceTime, switchMap, tap} from 'rxjs/operators';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Car} from './models/car.model';
@@ -9,11 +9,12 @@ import {Car} from './models/car.model';
   templateUrl: './car-group.component.html',
   styleUrls: ['./car-group.component.scss']
 })
-export class CarGroupComponent implements OnInit {
+export class CarGroupComponent implements OnInit, OnDestroy {
 
   loading$ = new BehaviorSubject<boolean>(false);
   cars$ = new BehaviorSubject<Car[]>([]);
   formGroup: FormGroup;
+  subscription: Subscription;
 
   constructor(private fb: FormBuilder) {
   }
@@ -29,7 +30,7 @@ export class CarGroupComponent implements OnInit {
   }
 
   handleInput(): void {
-    this.formGroup.controls.searchValue.valueChanges.pipe(
+    this.subscription = this.formGroup.controls.searchValue.valueChanges.pipe(
       tap(_ => this.loading$.next(true)),
       debounceTime(400),
       switchMap(input => {
@@ -55,5 +56,11 @@ export class CarGroupComponent implements OnInit {
       {key: 9, value: 'Tucson'},
       {key: 10, value: 'Onix'}
     ];
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
