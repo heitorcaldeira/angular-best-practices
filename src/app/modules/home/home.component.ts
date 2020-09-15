@@ -8,11 +8,14 @@ import {Component, OnInit} from '@angular/core';
 export class HomeComponent implements OnInit {
 
   color = '#00984A';
+  info = 'Clique aqui! :)';
 
   constructor() {
   }
 
   ngOnInit(): void {
+    setInterval(() => this.onClickInfo(), 1000);
+    setInterval(() => this.info = 'Localiza Labs', 3000);
   }
 
   onClickInfo(): void {
