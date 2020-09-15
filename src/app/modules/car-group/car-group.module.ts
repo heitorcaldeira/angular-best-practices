@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { CarGroupRoutingModule } from './car-group-routing.module';
-import { CarGroupComponent } from './car-group.component';
+import {CarGroupRoutingModule} from './car-group-routing.module';
+import {CarGroupComponent} from './car-group.component';
 import {HeaderModule} from '../../core/layout/header/header.module';
 import {CustomButtonModule} from '../../shared/components/custom-button/custom-button.module';
 import {CustomListModule} from '../../shared/components/custom-list/custom-list.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import {CustomListModule} from '../../shared/components/custom-list/custom-list.
     CarGroupRoutingModule,
     HeaderModule,
     CustomButtonModule,
-    CustomListModule
+    CustomListModule,
+    ReactiveFormsModule
   ]
 })
-export class CarGroupModule { }
+export class CarGroupModule {
+}

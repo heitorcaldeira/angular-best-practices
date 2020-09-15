@@ -1,7 +1,4 @@
 <ul class="list">
-  <!--  Sem trackBy -->
-  <li *ngFor="let item of list" class="list__default">{{ item.value }}</li>
-
   <!--  Com trackBy -->
   <li *ngFor="let item of list; trackBy: trackByFn" class="list__track">{{ item.value }}</li>
 </ul>
