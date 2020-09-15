@@ -1,40 +1,35 @@
-# Estrutura de pastas
+# Pipes
 
-    |-- app
-        |-- modules
-            |-- home
-                |-- [+] components
-                |-- [+] pages
-                |-- [+] services
-                |-- [+] models
-                |-- [+] store
-                    |-- [+] actions
-                    |-- [+] reducers
-                    |-- [+] effects
-                |-- home-routing.module.ts
-                |-- home.module.ts
-        |-- core
-            |-- [+] auth
-            |-- [+] layout
-                |-- [+] header
-                |-- [+] footer
-            |-- [+] guards
-            |-- [+] interceptors
-            |-- [+] services
-        |-- shared
-            |-- [+] components
-                |-- [+] custom-button
-                    |-- custom-button.module.ts
-            |-- [+] directives
-            |-- [+] pipes
-            |-- [+] models
-        |-- [+] configs
-    |-- assets
-         |-- scss
-              |-- [+] imports
-                  |-- _variables.scss
-                  |-- _mixins.scss
-              |-- styles.scss
-              
-Referência: 
-[How to define a highly scalable folder structure for your Angular project](https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7)
+Uma maneira elegante e performática de fazer transformação de dados no template.
+
+Nunca chame uma função do seu componente para tratar dados no template. Exemplo:
+
+`<h1>getCustomTitle(title)</h1>`
+
+ou..
+
+`<div *ngIf="isChecked(value)"></div>`
+
+Isso fará com que a cada nova detecção de changes, o Angular chame essa função, mesmo se os inputs não forem alterados.
+
+Para isso, use pipes:
+
+```
+import {Pipe, PipeTransform} from '@angular/core';
+ 
+ @Pipe({
+   name: 'myCustomPipe',
+   pure: true
+ })
+ export class CustomPipe implements PipeTransform {
+ 
+   transform(value: string): string {
+     // logic goes here
+     return value.toLowerCase();
+   }
+ }
+```
+
+No HTML:
+
+`<h1>title | myCustomPipe</h1>`
