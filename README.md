@@ -1,40 +1,21 @@
-# Estrutura de pastas
+# TrackBy
 
-    |-- app
-        |-- modules
-            |-- home
-                |-- [+] components
-                |-- [+] pages
-                |-- [+] services
-                |-- [+] models
-                |-- [+] store
-                    |-- [+] actions
-                    |-- [+] reducers
-                    |-- [+] effects
-                |-- home-routing.module.ts
-                |-- home.module.ts
-        |-- core
-            |-- [+] auth
-            |-- [+] layout
-                |-- [+] header
-                |-- [+] footer
-            |-- [+] guards
-            |-- [+] interceptors
-            |-- [+] services
-        |-- shared
-            |-- [+] components
-                |-- [+] custom-button
-                    |-- custom-button.module.ts
-            |-- [+] directives
-            |-- [+] pipes
-            |-- [+] models
-        |-- [+] configs
-    |-- assets
-         |-- scss
-              |-- [+] imports
-                  |-- _variables.scss
-                  |-- _mixins.scss
-              |-- styles.scss
-              
-Referência: 
-[How to define a highly scalable folder structure for your Angular project](https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7)
+Uma forma de melhorar a perfomance do ***ngFor**.
+
+Com esta função, é possível criar um índice único para cada item de uma lista.
+
+Com isso, o Angular só ira renderizar novos items na lista, se o índice mudar.
+
+Exemplo:
+
+`  <li *ngFor="let item of list; trackBy: trackByFn">{{ item.value }}</li>`
+
+e no arquivo do componente:
+
+```
+trackByFn(index: number, item: {key: number, value: string}): number {
+    return item.key;
+}
+```
+
+Para uma explicação de como a função funciona por baixo dos panos, [leia este post](https://stackoverflow.com/questions/44970386/how-is-angulars-ngfor-loop-implemented/44971440#44971440).
