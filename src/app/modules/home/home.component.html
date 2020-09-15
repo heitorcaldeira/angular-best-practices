@@ -1,7 +1,7 @@
 <app-header></app-header>
 
-<div class="home">
-  <p [ngStyle]="{'color': color}">Home</p>
+<div class="home" [ngStyle]="{'backgroundColor': color}">
+  <p>Home</p>
   <app-home-info
     [info]="'Clique aqui! :)'"
     (infoEmitter)="onClickInfo()"
