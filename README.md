@@ -1,8 +1,8 @@
-# Pipes
+# Pipe
 
 Uma maneira elegante e performática de fazer transformação de dados no template.
 
-Nunca chame uma função do seu componente para tratar dados no template. Exemplo:
+Nunca chame uma função do seu componente, diretamente no template para tratar dados. Exemplo:
 
 `<h1>getCustomTitle(title)</h1>`
 
@@ -12,7 +12,10 @@ ou..
 
 Isso fará com que a cada nova detecção de changes, o Angular chame essa função, mesmo se os inputs não forem alterados.
 
-Para isso, use pipes:
+Para isso, use pipes :)
+
+### O jeito correto
+
 
 ```
 import {Pipe, PipeTransform} from '@angular/core';
