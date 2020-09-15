@@ -1,11 +1,7 @@
 <app-header></app-header>
 
 <div class="car-group">
-  <form [formGroup]="formGroup">
-    <input type="text" formControlName="searchValue" placeholder="Filtro por nome">
-  </form>
+  <p>Grupo de Carros</p>
 
   <app-custom-list [list]="cars$ | async"></app-custom-list>
-
-  <span *ngIf="loading$ | async">Carregando..</span>
 </div>

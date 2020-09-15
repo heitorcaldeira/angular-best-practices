@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, of, Subscription} from 'rxjs';
-import {debounceTime, switchMap, tap} from 'rxjs/operators';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {take, takeUntil} from 'rxjs/operators';
 import {Car} from './models/car.model';
 
 @Component({
@@ -11,36 +10,25 @@ import {Car} from './models/car.model';
 })
 export class CarGroupComponent implements OnInit, OnDestroy {
 
-  loading$ = new BehaviorSubject<boolean>(false);
   cars$ = new BehaviorSubject<Car[]>([]);
-  formGroup: FormGroup;
-  subscription: Subscription;
+  destroy$ = new Subject();
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.formGroup = this.fb.group({
-      searchValue: ''
-    });
-
     this.cars$.next(this.getCars());
+    setInterval(() => this.cars$.next(this.getCars()), 1000);
 
-    this.handleInput();
-  }
+    // this.cars$.subscribe(cars => console.log(cars));
 
-  handleInput(): void {
-    this.subscription = this.formGroup.controls.searchValue.valueChanges.pipe(
-      tap(_ => this.loading$.next(true)),
-      debounceTime(400),
-      switchMap(input => {
-        const filter = this.getCars().filter(v => v.value.toLowerCase().indexOf(input.toLowerCase()) !== -1);
-        return of(filter);
-      })
-    ).subscribe(values => {
-      this.loading$.next(false);
-      this.cars$.next(values);
-    });
+    // this.cars$.pipe(
+    //   take(1)
+    // ).subscribe(cars => console.log(cars));
+
+    this.cars$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(cars => console.log(cars));
   }
 
   getCars(): Car[] {
@@ -59,8 +47,7 @@ export class CarGroupComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
