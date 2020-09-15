@@ -6,11 +6,21 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
 
   li {
-    background: $white;
     margin-bottom: 1rem;
     padding: 1rem 2rem;
     text-align: center;
+    margin-right: 1rem;
+  }
+
+  &__default {
+    background: $white;
+  }
+
+  &__track {
+    background: $black;
+    color: $white;
   }
 }
