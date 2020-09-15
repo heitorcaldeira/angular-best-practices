@@ -1,0 +1,16 @@
+@import "../../../../assets/scss/imports/variables";
+
+
+.list {
+  font-size: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    background: $white;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+  }
+}

@@ -1,7 +1,9 @@
 <app-header></app-header>
 
-<div class="home">
+<div class="car-group">
   <p>Grupo de Carros</p>
 
-  <app-custom-button [text]="'Não faço nada que alguem não tenha feito'"></app-custom-button>
+  <app-custom-list [list]="cars"></app-custom-list>
+
+  <app-custom-button [text]="'Atualizar lista'" (customClick)="updateList()"></app-custom-button>
 </div>

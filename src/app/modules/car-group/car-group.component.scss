@@ -1,10 +1,10 @@
 @import "../../../assets/scss/imports/variables";
 @import "../../../assets/scss/imports/mixins";
 
-.home {
+.car-group {
   background: url('../../../assets/images/lab_art_bg.png') $secondary center;
-  height: 100vh;
   flex: 1;
+  padding: 2rem 0;
   flex-direction: column;
   background-size: cover;
   display: flex;
