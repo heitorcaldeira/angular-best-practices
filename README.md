@@ -4,8 +4,31 @@ Lazy Loading é o processo de carregar arquivos sob demanda.
 
 Isso aumenta a velocidade de carregamento inicial da aplicação, pois somente serão carregados os módulos obrigatórios para a aplicação funcionar naquele momento.
 
-A forma mais comum de se carregar módulos sob demanda no Angular, é através das rotas. 
+A partir do Angular 9, é possível fazer o carregamento sob demanda de componentes.
+
 
 Exemplo:
 
-`{path: '', loadChildren: () => import('./home.module').then(m => m.HomeModule)}`
+```
+@ViewChild('container', { read: ViewContainerRef, static: true }) container: ViewContainerRef;
+componentRef: ComponentRef;
+
+constructor(
+    private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver
+) { }
+
+ngOnInit() {
+    this.loadComponent();
+}
+
+async loadComponent() {
+    const { LazyComponent } = await import('./lazy.component');
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(LazyComponent);
+    this.componentRef = this.container.createComponent(componentFactory);
+}
+
+/* html */
+<ng-template #container></ng-template>
+```
+

@@ -2,6 +2,9 @@
 
 <div class="home" [ngStyle]="{'backgroundColor': color}">
   <p>Home</p>
+
+  <ng-template #container></ng-template>
+
   <app-home-info
     [info]="'Clique aqui! :)'"
     (infoEmitter)="onClickInfo()"
