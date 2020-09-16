@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'grupo-de-carros',
     canActivate: [CustomGuard],
-    loadChildren: () => import('./modules/car-group/car-group.module').then(m => m.CarGroupModule)
+    loadChildren: async () => (await import('./modules/car-group/car-group.module')).CarGroupModule
   }
 ];
 
