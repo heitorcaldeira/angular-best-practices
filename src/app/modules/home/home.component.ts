@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   componentRef: ComponentRef<any>;
 
   constructor(
-    private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver
   ) {
   }

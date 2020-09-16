@@ -1,8 +1,6 @@
-# Lazy loading modules
+# Lazy loading components
 
 Lazy Loading é o processo de carregar arquivos sob demanda.
-
-Isso aumenta a velocidade de carregamento inicial da aplicação, pois somente serão carregados os módulos obrigatórios para a aplicação funcionar naquele momento.
 
 A partir do Angular 9, é possível fazer o carregamento sob demanda de componentes.
 
@@ -14,7 +12,6 @@ Exemplo:
 componentRef: ComponentRef;
 
 constructor(
-    private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver
 ) { }
 
