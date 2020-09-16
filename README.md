@@ -4,13 +4,13 @@ Cada componente Angular tem seu próprio ciclo de vida.
 
 O ciclo se inicia quando o componente é carregado ao DOM e finalizado quando removido do DOM.
 
-###Os ciclos são: 
+### Os ciclos são: 
 
 _OnInit, OnChanges, DoCheck, AfterViewInit, AfterContentInit, AfterViewChecked, AfterContentChecked, AfterViewChecked, OnDestroy_
 
 ---
 
-###Ordem do ciclo
+### Ordem do ciclo
 
 Assim que um componente se inicia, o **OnInit** é chamado. 
 
