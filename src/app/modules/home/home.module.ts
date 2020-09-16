@@ -17,3 +17,4 @@ import { HomeInfoComponent } from './components/home-info/home-info.component';
 })
 export class HomeModule {
 }
+
