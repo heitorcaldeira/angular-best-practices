@@ -5,10 +5,11 @@ import {HomeRoutingModule} from './home-routing.module';
 import {HomeComponent} from './home.component';
 import {HeaderModule} from '../../core/layout/header/header.module';
 import { HomeInfoComponent } from './components/home-info/home-info.component';
+import { HomeChildComponent } from './components/home-child/home-child.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, HomeInfoComponent],
+  declarations: [HomeComponent, HomeInfoComponent, HomeChildComponent],
   imports: [
     CommonModule,
     HeaderModule,

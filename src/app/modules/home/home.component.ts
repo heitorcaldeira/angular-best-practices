@@ -9,6 +9,7 @@ import {
 })
 export class HomeComponent {
 
+  childText = 'Componente Filho';
   color = '#00984A';
   index = 0;
   interval: any;

@@ -2,7 +2,10 @@
 
 <div class="home" [ngStyle]="{'backgroundColor': color}">
   <p>Home</p>
-  <app-home-info
-    (infoEmitter)="onClickInfo()"
-  ></app-home-info>
+    <app-home-info
+      [info]="'Localiza'"
+      (infoEmitter)="onClickInfo()"
+    ></app-home-info>
+
+<!--  <app-home-child [text]="childText"></app-home-child>-->
 </div>

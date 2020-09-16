@@ -3,7 +3,8 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DoCheck,
   EventEmitter,
@@ -18,7 +19,7 @@ import {
 @Component({
   selector: 'app-home-info',
   templateUrl: './home-info.component.html',
-  styleUrls: ['./home-info.component.scss'],
+  styleUrls: ['./home-info.component.scss']
 })
 export class HomeInfoComponent implements OnInit, OnChanges, DoCheck, AfterViewInit,
   AfterContentInit, AfterViewChecked, AfterContentChecked, AfterViewChecked, OnDestroy {
@@ -29,7 +30,7 @@ export class HomeInfoComponent implements OnInit, OnChanges, DoCheck, AfterViewI
   index = 0;
   interval: any;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,8 +46,6 @@ export class HomeInfoComponent implements OnInit, OnChanges, DoCheck, AfterViewI
   ngDoCheck(): void {
     console.log('ngDoCheck', this.index);
     this.index++;
-
-    // this.cd.detectChanges();
   }
 
   ngAfterContentInit(): void {
