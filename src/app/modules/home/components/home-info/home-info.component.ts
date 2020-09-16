@@ -3,7 +3,7 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   DoCheck,
   EventEmitter,
@@ -19,7 +19,6 @@ import {
   selector: 'app-home-info',
   templateUrl: './home-info.component.html',
   styleUrls: ['./home-info.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeInfoComponent implements OnInit, OnChanges, DoCheck, AfterViewInit,
   AfterContentInit, AfterViewChecked, AfterContentChecked, AfterViewChecked, OnDestroy {
@@ -27,14 +26,31 @@ export class HomeInfoComponent implements OnInit, OnChanges, DoCheck, AfterViewI
   @Input() info: string;
   @Output() infoEmitter = new EventEmitter();
 
-  index = 100;
+  index = 0;
   interval: any;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges', changes.info.previousValue, changes.info.currentValue, this.index);
+    this.index++;
   }
 
   ngOnInit(): void {
     console.log('ngOnInit', this.index);
+    this.index++;
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck', this.index);
+    this.index++;
+
+    // this.cd.detectChanges();
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit', this.index);
     this.index++;
   }
 
@@ -43,28 +59,13 @@ export class HomeInfoComponent implements OnInit, OnChanges, DoCheck, AfterViewI
     this.index++;
   }
 
-  ngAfterContentInit(): void {
-    console.log('ngAfterContentInit', this.index);
-    this.index++;
-  }
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked', this.index);
-    this.index++;
-  }
-
   ngAfterViewInit(): void {
     console.log('ngAfterViewInit', this.index);
     this.index++;
   }
 
-  ngDoCheck(): void {
-    console.log('ngDoCheck', this.index);
-    this.index++;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges', changes.info.previousValue, changes.info.currentValue, this.index);
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked', this.index);
     this.index++;
   }
 
